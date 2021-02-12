@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        
+        <link rel="stylesheet" type="text/css" href="Style.css">
+      
+         
+      
+</head>
+<body>
+    
+    
+    
+    <!--Header-->
+    
+    <div class="col-sm-6 header">
+       <div class="row">
+       <div class="col-sm-2"><h2>Home</h2></div>
+        <div class="col-sm-8"><h2>Progetto Aereoporto di Pigozzo Alessandro</h2></div>
+       </div>
+    </div>
+    
+    
+    <div class="row">
+    <!--div form sinistro-->
+    
+      <div class="col-sm-2 form-sinistro"> 
+    <h2>Anagrafica</h2>
+    <form>
+   
+  <div class="form-group">
+    <label for="Id">Id - Seriale Biglietto</label>
+    <input type="text" class="form-control" id="seriale">
+  </div>
+  <div class="form-group">
+    <label for="Name">Nome e Cognome</label>
+    <input type="text" class="form-control" id="nome">
+  </div>
+  <div class="form-group">
+    <label for="Code">Seleziona l'aereoporto di partenza</label>
+     <select class="form-control" id="codice1" onclick="myFunction()">
+      <option value="1">Mi</option>
+      <option value="2">Fi</option>
+      <option value="3">Rm</option>
+      <option value="4">Np</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Lat">Inserisci il posto a sedere</label>
+    <input type="text" class="form-control" maxlength="3" id="posto">
+  </div>
+   <div class="form-group">
+    <label for="Ing">Seleziona l'ingresso</label>
+    <select class="form-control" id="gate">
+      <option>Gate 1</option>
+      <option>Gate 2</option>
+      <option>Gate 3</option>
+      <option>Gate 4</option>
+      <option>Gate 5</option>
+      <option>Gate 6</option>
+      <option>Gate 7</option>
+    </select>
+  </div>
+
+    </form>
+    </div>
+   
+       <!--fine form sinistro-->
+       
+       
+       
+       
+       
+       
+       
+       
+        <!--div form centrale-->
+    
+    <div class="col-sm-2 form-centrale"> 
+    <h2>Volo</h2>
+    <form>
+   
+  <div class="form-group">
+    <label for="code_departure">Codice di partenza</label>
+    <textarea class="form-control" id="codicepartenza" rows="1" readonly></textarea>
+  </div>
+  <div class="form-group">
+    <label for="code_arrival">Codice di arrivo</label>
+    <select class="form-control" id="codice2" >
+      <option value="1">Aereoporto Milano</option>
+      <option value="2">Aereoporto Firenze</option>
+      <option value="3">Aereoporto Roma</option>
+      <option value="4">Aereoporto Napoli</option>
+    </select>
+  </div>
+   <div class="form-group">
+    <label for="Price">Prezzo</label>
+   <textarea class="form-control" id="prezzo" rows="1" readonly placeholder="In euro"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <button type="button" class="btn btn-outline-danger" onclick="PrendiDuePunti()">Stima Prezzo Biglietto</button>
+  </div>
+  
+  <div class="form-group">
+          <button type="button" class="btn btn-outline-danger" onclick="Riepilogo()">Stampa Biglietto</button>
+  </div>
+   
+
+   
+    </form>
+    </div>
+         <!--div fine form centrale-->
+    
+        
+        <!--div paragrafo destro-->
+    
+    <div class="col-sm-4 form-destro">
+         <h2>Riepilogo Biglietto</h2>
+        
+        <div>
+        Id del biglietto  :<p id ="bigliettoriepilogo"> </p>
+         Intestatario del biglietto :<p id ="intestatarioriepilogo"> </p>
+        Posto a sedere : <p id ="postoriepilogo">  </p>
+         Gate :<p id ="gateriepilogo">  </p>
+        Aereoporto di Partenza : <p id ="aereoportopartenzariepilogo"></p>
+        Aereoporto di Arrivo : <p id ="aereoportoarrivoriepilogo"></p> 
+        </div>
+        
+    </div> 
+    
+       
+          
+                
+    </div>  
+    
+        <!--div fine row--> 
+        
+ 
+        
+        
+        
+    <script>
+        
+    
+        
+        //funzione che restituisce il valore dell'aereoporto selezionato
+        
+        function myFunction() {
+            let prova = document.getElementById("codice1").value;
+            console.log(prova);
+            switch(prova){
+                case "1":
+                    let testo1 = "Aereoporto Milano"
+                    document.getElementById("codicepartenza").innerHTML = testo1;
+                    break;
+                case "2":
+                    let testo2 = "Aereoporto Firenze"
+                    document.getElementById("codicepartenza").innerHTML = testo2;
+                    break;
+                 case "3":
+                    let testo3 = "Aereoporto Roma"
+                   document.getElementById("codicepartenza").innerHTML = testo3;
+                    break;
+                 case "4":
+                    let testo4 = "Aereoporto Napoli"
+                    document.getElementById("codicepartenza").innerHTML = testo4;
+                    break;
+                    
+                    default:
+                    console.log("Spiacenti, non sono riuscito a prendere il valore");
+                
+            }
+            
+            
+           
+        }
+        
+      
+        
+        //funzione per mantenere la scrittura in uppercase del field - Generale
+
+  function forceKeyPressUppercase(e)
+  {
+    var charInput = e.keyCode;
+    if((charInput >= 97) && (charInput <= 122)) { // lowercase
+      if(!e.ctrlKey && !e.metaKey && !e.altKey) { // no modifier key
+        var newChar = charInput - 32;
+        var start = e.target.selectionStart;
+        var end = e.target.selectionEnd;
+        e.target.value = e.target.value.substring(0, start) + String.fromCharCode(newChar) + e.target.value.substring(end);
+        e.target.setSelectionRange(start+1, start+1);
+        e.preventDefault();
+      }
+    }
+  }
+
+  document.getElementById("seriale").addEventListener("keypress", forceKeyPressUppercase, false);
+        
+        
+
+    </script>    
+    
+    <!--SCRIPT per funzioni di calcolo-->
+    
+    <script type="text/javascript" src="Scriptjs.js"></script>
+    
+   
+
+</body>
+</html>

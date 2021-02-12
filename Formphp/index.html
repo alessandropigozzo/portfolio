@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+   <div class="contact-title">
+       <h1 style="color:black">Benvenuto</h1>
+       <h2 style="color:black">Questo è un form di prova di Alessandro Pigozzo</h2>
+   </div>
+   
+   
+    <div class="contact-form">
+        <form action="contact-form-handler.php" id="contact-form" method="post">
+            <input type="text" name="name" class="form-control" placeholder="Inserisci il tuo nome" required><br>
+             <input type="text" name="surname" class="form-control" placeholder="Inserisci il tuo cognome" required><br>
+             <input type="email" name="email" class="form-control" placeholder="Inserisci la tua email" required><br>
+             
+             <textarea name="message"  rows="8" class="form-control" placeholder="Messaggio" required></textarea><br>
+             
+             <input type="submit" class="form-control submit" value="Invia messaggio">
+            
+        </form>
+    </div>
+    
+</body>
+</html>
